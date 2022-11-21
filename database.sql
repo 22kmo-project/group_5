@@ -126,7 +126,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'Aku Ankka','Paratiisitie 13',' 555 258'),(2,'Mikki Hiiri','Ankkalinna','555 64554'),(3,'Mortti','Ankkalinna','555 667884'),(4,'Vertti','Ankalinna','555 837884');
+INSERT INTO `customer` VALUES (1,'Aku Ankka','Paratiisitie 13',' 555 258'),(2,'Mikki Hiiri','Ankkalinna','555 64554'),(3,'Mortti','Ankkalinna','555 667884'),(4,'Vertti','Ankkalinna','555 837884');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
