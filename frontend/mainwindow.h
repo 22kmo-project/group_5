@@ -6,6 +6,7 @@
 #include <nosto.h>
 #include <saldo.h>
 #include <tilitapahtumat.h>
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -35,10 +36,16 @@ private slots:
 
     void on_naytasaldo_clicked();
 
+public slots:
+    void ajastin();
+
 private:
     Ui::MainWindow *ui;
     nosto Nostoikkuna;//tällä pääsee nostotapahtumien ikkunaan
     saldo Saldoikkuna;
     tilitapahtumat Tilitapahtumaikkuna;
+    int asiakasnumero;
+    QTimer *timer;
+    int aika;
 };
 #endif // MAINWINDOW_H

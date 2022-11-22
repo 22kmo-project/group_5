@@ -31,7 +31,7 @@
     <string>Tilitapahtumat</string>
    </property>
   </widget>
-  <widget class="QTextBrowser" name="textBrowser">
+  <widget class="QTextBrowser" name="tilitapahtumabox">
    <property name="geometry">
     <rect>
      <x>70</x>
@@ -41,7 +41,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="alkuun_3">
    <property name="geometry">
     <rect>
      <x>330</x>
@@ -52,6 +52,42 @@
    </property>
    <property name="text">
     <string>Palaa kotinäyttöön</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>50</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Asiakas:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="asiakasnro">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>50</y>
+     <width>111</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>(asiakasnumero)</string>
    </property>
   </widget>
  </widget>

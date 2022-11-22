@@ -15,8 +15,15 @@ public:
     explicit tilitapahtumat(QWidget *parent = nullptr);
     ~tilitapahtumat();
 
+private slots:
+    void on_alkuun_3_clicked();
+
 private:
     Ui::tilitapahtumat *ui;
+    int asiakasnumero;
+
+signals:
+    void PalaaKotinayttoon();
 };
 
 #endif // TILITAPAHTUMAT_H
