@@ -1,0 +1,40 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `debit_transfer`(IN first_id INT, IN second_id INT, IN amount DOUBLE )
+BEGIN
+  DECLARE test1, test2 INT DEFAULT 0;
+  START TRANSACTION;
+  UPDATE account SET saldo=saldo-amount WHERE idaccount=first_id AND saldo>=amount;
+  SET test1=ROW_COUNT();
+  UPDATE account SET saldo=saldo-amount WHERE idaccount=second_id;
+  SET test2=ROW_COUNT();
+    IF (test1 > 0 AND test2 >0) THEN
+      COMMIT;
+      INSERT INTO action(idaccount,amount,action_time) VALUES(first_id,amount, NOW());
+      INSERT INTO action(idaccount,amount,action_time) VALUES(second_id,amount, NOW());
+    ELSE
+      ROLLBACK;
+  END IF;
+END
+
+second_id on automaatin rahamäärän kertova tili. Ajattelin toiminan olevan lopullisessa ohjelmassa sellainen, että qt-sovellus tarkistaa ensin onko automaatilla riittävästi käteistä. 
+
+CREATE PROCEDURE credit_transfer(IN first_id INT, IN second_id INT, IN amount DOUBLE )
+  BEGIN
+  DECLARE test1, test2 INT DEFAULT 0;
+  START TRANSACTION;
+  UPDATE account SET saldo=saldo-amount WHERE idaccount=first_id AND saldo-amount<-1000;
+  SET test1=ROW_COUNT();
+  UPDATE account SET saldo=saldo-amount WHERE idaccount=second_id;
+  SET test2=ROW_COUNT();
+    IF (test1 > 0 AND test2 >0) THEN   
+      COMMIT;    
+      INSERT INTO action(idaccount,amount,action_time) VALUES(first_id,amount,NOW());
+      INSERT INTO action(idaccount,amount,action_time) VALUES(second_id,amount,NOW());
+    ELSE
+      ROLLBACK;
+  END IF;
+  END //
+DELIMITER ;
+
+syntaksissa on jotain vikaa ja muutenkin kesken. Tarkoitus olisi, että lopullisessa versiossa 
+UPDATE account SET saldo=saldo-amount WHERE idaccount=first_id AND saldo-amount<-1000; luottoraja haetaan
+account taulun accounttype arvosta
