@@ -9,7 +9,11 @@ var usersRouter = require('./routes/users');
 var cardRouter = require('./routes/card');
 
 var actionRouter = require('./routes/action');
+
+var accountRouter = require('./routes/account');
+
 var customerRouter = require('./routes/customer');
+
 
 
 var app = express();
@@ -26,7 +30,11 @@ app.use('/users', usersRouter);
 app.use('/card', cardRouter);
 
 app.use('/action', actionRouter);
+
+app.use('/account', accountRouter);
+
 app.use('/customer', customerRouter);
+
 
 
 module.exports = app;
