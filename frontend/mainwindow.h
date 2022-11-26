@@ -39,6 +39,10 @@ private slots:
 public slots:
     void ajastin();
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> interf/main
 private:
     Ui::MainWindow *ui;
     nosto Nostoikkuna;//tällä pääsee nostotapahtumien ikkunaan

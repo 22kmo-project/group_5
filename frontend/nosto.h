@@ -2,6 +2,7 @@
 #define NOSTO_H
 
 #include <QWidget>
+#include <QTimer>
 
 namespace Ui {
 class nosto;
@@ -18,9 +19,14 @@ public:
 private:
     Ui::nosto *ui;
     int asiakasnumero;
+    QTimer *timer2;
+    int aika;
 
 signals:
     void PalaaKotinayttoon();
+
+public slots:
+    void ajastin2();
 
 private slots:
     void on_alkuun_clicked();

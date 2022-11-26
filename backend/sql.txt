@@ -1,0 +1,5 @@
+CREATE USER 'group_5'@'localhost' IDENTIFIED WITH mysql_native_password BY 'netpass';
+GRANT ALL on bank.* to 'group_5'@'localhost';
+
+select idaccount, action_time, amount from action where idaccount='3' order by action_time limit 10;
+
