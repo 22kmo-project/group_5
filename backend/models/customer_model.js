@@ -12,10 +12,17 @@ const customer = {
     },
 
 
+
     add: function(card, callback) {
       return db.query(
         'insert into customer (idcustomer, customername, address, phonenumber) values(?,?,?,?)',
         [customer.idcustomer, customer.customername, customer.address, customer.phonenumber],
+
+    add: function(add_data, callback) {
+      return db.query(
+        'insert into customer (idcustomer, customername, address, phonenumber) values(?,?,?,?)',
+        [add_data.idcustomer, add_data.customername, add_data.address, add_data.phonenumber],
+
         callback
       );
     },
@@ -30,6 +37,14 @@ const customer = {
       return db.query(
         'update customer set phonenumber = ? where idcustomer = ?',
         [customer.phone_number, id],
+      return db.query('delete from customer where idcustomer=?', [id], callback);
+    },
+
+    
+    update: function(id, customer, callback) {
+      return db.query(
+        'update customer set customername=?, address=?, phonenumber=?, where idcustomer=?',
+        [customer.customername, customer.address, customer.phonenumber, id],
         callback
       );
     }
