@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(185, 255, 203);</string>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -72,9 +75,23 @@
     <rect>
      <x>350</x>
      <y>150</y>
-     <width>141</width>
-     <height>31</height>
+     <width>161</width>
+     <height>41</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">display: inline-block;
+  padding: 10px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;</string>
    </property>
    <property name="text">
     <string>Palaa aloitusnäyttöön</string>
@@ -92,6 +109,20 @@
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="1">
      <widget class="QPushButton" name="sata">
+      <property name="styleSheet">
+       <string notr="true">display: inline-block;
+  padding: 10px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;</string>
+      </property>
       <property name="text">
        <string>100€</string>
       </property>
@@ -99,6 +130,20 @@
     </item>
     <item row="1" column="0">
      <widget class="QPushButton" name="nelkyt">
+      <property name="styleSheet">
+       <string notr="true">display: inline-block;
+  padding: 10px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;</string>
+      </property>
       <property name="text">
        <string>40€</string>
       </property>
@@ -106,6 +151,20 @@
     </item>
     <item row="2" column="0">
      <widget class="QPushButton" name="kuuskyt">
+      <property name="styleSheet">
+       <string notr="true">display: inline-block;
+  padding: 10px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;</string>
+      </property>
       <property name="text">
        <string>60€</string>
       </property>
@@ -113,6 +172,20 @@
     </item>
     <item row="1" column="1">
      <widget class="QPushButton" name="kakssata">
+      <property name="styleSheet">
+       <string notr="true">display: inline-block;
+  padding: 10px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;</string>
+      </property>
       <property name="text">
        <string>200€</string>
       </property>
@@ -120,6 +193,20 @@
     </item>
     <item row="2" column="1">
      <widget class="QPushButton" name="viissata">
+      <property name="styleSheet">
+       <string notr="true">display: inline-block;
+  padding: 10px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;</string>
+      </property>
       <property name="text">
        <string>500€</string>
       </property>
@@ -127,6 +214,20 @@
     </item>
     <item row="0" column="0">
      <widget class="QPushButton" name="kakskyt">
+      <property name="styleSheet">
+       <string notr="true">display: inline-block;
+  padding: 10px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;</string>
+      </property>
       <property name="text">
        <string>20€</string>
       </property>
