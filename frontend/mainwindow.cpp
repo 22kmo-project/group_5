@@ -34,32 +34,20 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_seuraava_clicked()
 {
-    QString username = ui->korttinro->text(); //line edittiin laitettu korttinumero syötetään username muuttujaan
-    if(username == "123456789"){
-    ui->stackedWidget->setCurrentIndex(1); //jos kortin numero on oikein siirrytään seuraavaan näkymään
+    ui->stackedWidget->setCurrentIndex(1); /*tämä vain siirtyy tunnuslukunäkymään tässä, lisätään tähän
+                                            toiminto kortin numeron hakeminen tietokannasta*/
     aika = 0; //nollataan kulunut aika
     timer->start(1000); //startataan timer
-}
-    else{
-        ui->virheviesti1->setText("Kortin numero virheellinen"); //jos kortin numero oli väärin niin tulee yläpuolelle virheviesti
-        ui->korttinro->clear(); //line edit kohta tyhjennetään
-    }
+
 
 }
 
 
 void MainWindow::on_seuraava_2_clicked()
 {
-    QString password = ui->korttinro_2->text();
-    if(password == "0000"){
-    ui->stackedWidget->setCurrentIndex(2); // jos tunnusluku oli oikein niin siirrytään aloitusnäyttöön
+    ui->stackedWidget->setCurrentIndex(2); /*tässäkin siirrytään nyt vaan aloitusnäyttöön, lisätään toiminto tunnusluvun hakeminen tietokannasta*/
     aika = 0; //nollataan kulunut aika
     timer->start(1000); //startataan timer
-    }
-    else{
-        ui->virheviesti2->setText("Tunnusluku virheellinen"); //jos tunnusluku oli virheellinen annetaan virheviesti
-        ui->korttinro_2->clear(); //line edit kenttä tyhjentyy
-    }
 }
 
 
@@ -68,7 +56,7 @@ void MainWindow::on_nostarahaa_clicked()
     ui->stackedWidget->setCurrentIndex(3); //aloitusnäytöstä nostotapahtumanäkymään
     timer->stop(); //tällä rimpsulla saadaan joka näkymälle aloittamaan 30 sekunnin aika alusta(aikakatkaisu)
     aika = 0;
-    //timer->start();
+    timer->start();
 }
 
 
@@ -116,15 +104,15 @@ void MainWindow::ajastin()
     aika ++; //lisätään kuluvaa aikaa
     qDebug() <<aika;
 
-    if(ui->stackedWidget->currentIndex()== 1 && aika > 10){
+    if(ui->stackedWidget->currentIndex()== 1 && aika > 3){
         ui->stackedWidget->setCurrentIndex(0);
     timer->stop(); //kun oot ollu kirjautumisnäkymässä määrätyn ajan painamatta mitään niin nakataan alkuun ja timer nollataan
     }
-    if (ui->stackedWidget->currentIndex()==1 && aika > 30){
+    if (ui->stackedWidget->currentIndex()==1 && aika > 10){
         ui->stackedWidget->setCurrentIndex(0);
         timer->stop(); //kun oot ollu aloitusnäytössä määrätyn ajan painamatta mitään niin nakataan kirjautumisnäkymään ja timer nollataan
     }
-    if(ui->stackedWidget->currentIndex()>2 && aika > 10){
+    if(ui->stackedWidget->currentIndex()>2 && aika > 3){
         ui->stackedWidget->setCurrentIndex(2);
         timer->stop();
         aika = 0;
