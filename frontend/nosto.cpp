@@ -1,7 +1,6 @@
 #include "nosto.h"
 #include "ui_nosto.h"
 #include <QMessageBox>
-#include <QDebug>
 
 nosto::nosto(QWidget *parent) :
     QWidget(parent),
@@ -9,9 +8,6 @@ nosto::nosto(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->asiakasnro->setText("0004"); //tähän asiakastiedot, kortin numero?
-    timer2 = new QTimer(this); //luodaan tässä se ajastin että heittää ulos jos ei tietyn ajan sisään tee jotain
-    connect(timer2, SIGNAL(timeout()), this, SLOT(ajastin2())); //timerin yhistäminen
-            //timer2->start(1000);
 }
 
 nosto::~nosto()
@@ -21,8 +17,7 @@ nosto::~nosto()
 
 void nosto::on_alkuun_clicked()
 {
-
-    emit PalaaKotinayttoon(); //nostotapahtumien ikkunasta takaisin aloitusnäyttöön
+  emit PalaaKotinayttoon(); //nostotapahtumien ikkunasta takaisin aloitusnäyttöön
 }
 
 
@@ -61,9 +56,3 @@ void nosto::on_viissata_clicked()
     QMessageBox::about(this, "Nosto onnistui", "Tililtäsi nostettiin 500 euroa");
 }
 
-void nosto::ajastin2()
-{
-    qDebug() <<"update2..";
-    aika ++; //lisätään kuluvaa aikaa
-    //qDebug() <<aika;
-   }
