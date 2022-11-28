@@ -93,18 +93,15 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">display: inline-block;
-  padding: 10px 20px;
+    <string notr="true"> padding: 10px 20px;
   font-size: 12px;
-  cursor: pointer;
   text-align: center;
   text-decoration: none;
   outline: none;
   color: #fff;
   background-color: #4CAF50;
   border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;</string>
+  border-radius: 15px;</string>
    </property>
    <property name="text">
     <string>Palaa aloitusnäyttöön</string>
