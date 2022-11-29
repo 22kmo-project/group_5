@@ -24,6 +24,9 @@ const card = {
       [update_data.idcustomer, update_data.password, update_data.idaccount, id],
       callback
     );
+  },
+  checkPassword: function(idcard,callback){
+    return db.query('select password from card where idcard=?',[idcard],callback);
   }
 };
 module.exports = card;
