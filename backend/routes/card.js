@@ -52,7 +52,7 @@ function(request, response) {
 
 router.put('/:id', 
 function(request, response) {
-  card.update(request.params.id, request.body, function(err, dbResult) { //card.update(request.params.id, request.body, function(err, dbResult) {
+  card.update(request.params.id, request.body, function(err, dbResult) { 
     if (err) {
       response.json(err);
     } else {

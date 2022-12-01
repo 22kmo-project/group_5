@@ -1,26 +1,29 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const login = require('../models/card_model');
+const card = require('../models/card_model');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
+
 
 router.post('/', 
   function(request, response) {
     if(request.body.idcard && request.body.password){
-      const user = request.body.idcard;
-      const pass = request.body.password;
+      const idcard = request.body.idcard;
+      const password = request.body.password;
+      console.log("\nTunnukset: " + idcard + " " + password);
       
-        login.checkPassword(user, function(dbError, dbResult) {
+        card.checkPassword(idcard, function(dbError, dbResult) {
           if(dbError){
             response.json(dbError);
           }
           else{
             if (dbResult.length > 0) {
-              bcrypt.compare(pass,dbResult[0].password, function(err,compareResult) {
+              bcrypt.compare(password,dbResult[0].password, function(err,compareResult) {
+                console.log("tunnusluku: " + dbResult[0].password);
                 if(compareResult) {
-                  console.log("succes");
-                  const token = generateAccessToken({ idcard: user });
+                  console.log("success");
+                  const token = generateAccessToken({ card: idcard });
                   response.send(token);
                 }
                 else {
@@ -31,7 +34,7 @@ router.post('/',
               );
             }
             else{
-              console.log("user does not exists");
+              console.log("card unknown");
               response.send(false);
             }
           }
