@@ -53,7 +53,7 @@ border-image: url(:/images/taustabank.png);
      <string notr="true">background-color: transparent;</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page">
      <property name="styleSheet">
@@ -106,7 +106,7 @@ QPushButton:hover:!pressed{
          <widget class="QLabel" name="label_5">
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>9</pointsize>
            </font>
           </property>
           <property name="text">
@@ -121,11 +121,11 @@ QPushButton:hover:!pressed{
          <widget class="QLabel" name="label">
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>10</pointsize>
            </font>
           </property>
           <property name="text">
-           <string>Kirjaudu sisään, ole hyvä</string>
+           <string>Syötä 4 numeroinen kortin numero</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>

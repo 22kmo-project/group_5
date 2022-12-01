@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
     timer = new QTimer(this); //luodaan tässä se ajastin että heittää ulos jos ei tietyn ajan sisään tee jotain
     connect(timer, SIGNAL(timeout()), this, SLOT(ajastin())); //timerin yhistäminen
 
-    ui->asiakasnimi->setText("Roope Ankka"); //asiakkaan nimi aloitusnäytölle
+
 
 
 }
@@ -34,8 +34,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_seuraava_clicked()
 {
-    QString username = ui->korttinro->text(); //line edittiin laitettu korttinumero syötetään username muuttujaan
-    if(username == "123456789"){
+    username = ui->korttinro->text(); //line edittiin laitettu korttinumero syötetään username muuttujaan
+    if(username.length() == 1){
     ui->stackedWidget->setCurrentIndex(1); //jos kortin numero on oikein siirrytään seuraavaan näkymään
     aika = 0; //nollataan kulunut aika
     timer->start(1000); //startataan timer
@@ -44,14 +44,29 @@ void MainWindow::on_seuraava_clicked()
         ui->virheviesti1->setText("Kortin numero virheellinen"); //jos kortin numero oli väärin niin tulee yläpuolelle virheviesti
         ui->korttinro->clear(); //line edit kohta tyhjennetään
     }
-
+//ui->asiakasnimi->setText(username); //asiakkaan nimi aloitusnäytölle
 }
 
 
 void MainWindow::on_seuraava_2_clicked()
 {
     QString password = ui->korttinro_2->text();
-    if(password == "0000"){
+
+    QJsonObject jsonObj;
+        jsonObj.insert("idcard",username);
+        jsonObj.insert("password",password);
+
+        QString site_url="http://localhost:3000/login";
+        QNetworkRequest request((site_url));
+        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+
+        loginManager = new QNetworkAccessManager(this);
+        connect(loginManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(loginSlot(QNetworkReply*)));
+
+        reply = loginManager->post(request, QJsonDocument(jsonObj).toJson());
+
+    /*if(password == "0000"){
     ui->stackedWidget->setCurrentIndex(2); // jos tunnusluku oli oikein niin siirrytään aloitusnäyttöön
     aika = 0; //nollataan kulunut aika
     timer->start(1000); //startataan timer
@@ -59,7 +74,10 @@ void MainWindow::on_seuraava_2_clicked()
     else{
         ui->virheviesti2->setText("Tunnusluku virheellinen"); //jos tunnusluku oli virheellinen annetaan virheviesti
         ui->korttinro_2->clear(); //line edit kenttä tyhjentyy
-    }
+    }*/
+
+
+        ui->asiakasnimi->setText(username); //asiakkaan nimi aloitusnäytölle
 }
 
 
@@ -108,6 +126,37 @@ void MainWindow::on_naytasaldo_clicked()
     timer->stop();
     aika = 0;
     timer->start();
+}
+
+void MainWindow::loginSlot(QNetworkReply *reply)
+{
+response_data=reply->readAll();
+qDebug()<<response_data;
+int test=QString::compare(response_data,"false");
+    qDebug()<<test;
+
+if(response_data.length()==0){
+        ui->virheviesti2->setText("Palvelin ei vastaa");
+    }
+    else {
+        if(QString::compare(response_data,"-4078")==0){
+            ui->virheviesti2->setText("Virhe tietokanta yhteydessä");
+        }
+        else {
+            if(test==0){
+                ui->korttinro_2->clear();
+                ui->virheviesti2->setText("Tunnus ja salasana eivät täsmää");
+            }
+            else {
+                //setWebToken("Bearer "+response_data); //nyt en tiiä lähteekö se webtoken mihinkään, en tiiä mitä tämän kohan pitäis tehä
+                ui->stackedWidget->setCurrentIndex(2); // jos tunnusluku oli oikein niin siirrytään aloitusnäyttöön
+                aika = 0; //nollataan kulunut aika
+                timer->start(1000); //startataan timer
+            }
+        }
+    }
+    reply->deleteLater();
+    loginManager->deleteLater();
 }
 
 void MainWindow::ajastin()

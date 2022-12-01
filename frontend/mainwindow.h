@@ -7,6 +7,9 @@
 #include <saldo.h>
 #include <tilitapahtumat.h>
 #include <QTimer>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,6 +22,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    const QString &getWebToken() const;
+    void setWebToken(const QByteArray &newWebToken);
+
 
 private slots:
 
@@ -35,6 +41,7 @@ private slots:
     void on_tilitapahtumat_clicked();
 
     void on_naytasaldo_clicked();
+    void loginSlot (QNetworkReply *reply);
 
 public slots:
     void ajastin();
@@ -47,5 +54,9 @@ private:
     int asiakasnumero;
     QTimer *timer;
     int aika;
+    QNetworkAccessManager *loginManager;
+    QNetworkReply *reply;
+    QByteArray response_data;
+    QString username;
 };
 #endif // MAINWINDOW_H
