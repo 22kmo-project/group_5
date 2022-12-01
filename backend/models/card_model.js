@@ -28,7 +28,7 @@ const card = {
     bcrypt.hash(card.password,saltRounds,function(err, hash){
     return db.query(
       'update card set idcustomer=?,password=?, idaccount=? where idcard=?',
-      [update_data.idcustomer, hash, update_data.idaccount, id],
+      [card.idcustomer, hash, card.idaccount, id],
       callback);
   });
   
