@@ -46,6 +46,7 @@ private slots:
 public slots:
     void ajastin();
 
+
 private:
     Ui::MainWindow *ui;
     nosto Nostoikkuna;//tällä pääsee nostotapahtumien ikkunaan
@@ -58,5 +59,6 @@ private:
     QNetworkReply *reply;
     QByteArray response_data;
     QString username;
+    QByteArray token;
 };
 #endif // MAINWINDOW_H

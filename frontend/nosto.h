@@ -15,11 +15,12 @@ class nosto : public QWidget
 public:
     explicit nosto(QWidget *parent = nullptr);
     ~nosto();
+    QTimer *timer2;
+    void paivitanosto();
 
 private:
     Ui::nosto *ui;
     int asiakasnumero;
-    QTimer *timer2;
     int aika;
 
 signals:

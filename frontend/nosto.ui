@@ -17,6 +17,9 @@
    <string notr="true">#nosto{
 border-image: url(:/images/taustabank.png);
 }
+QMessageBox{
+	background-color: rgb(72, 183, 106);
+}
 QPushButton{
  padding: 10px 20px;
   font-size: 12px;

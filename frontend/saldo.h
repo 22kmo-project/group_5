@@ -14,6 +14,7 @@ class saldo : public QWidget
 public:
     explicit saldo(QWidget *parent = nullptr);
     ~saldo();
+    void paivitasaldo();
 
 private slots:
     void on_alkuun_2_clicked();

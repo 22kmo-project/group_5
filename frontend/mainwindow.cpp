@@ -31,6 +31,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::setWebToken(const QByteArray &newWebToken)
+{
+    token = newWebToken;
+}
+
 
 void MainWindow::on_seuraava_clicked()
 {
@@ -83,6 +88,8 @@ void MainWindow::on_seuraava_2_clicked()
 
 void MainWindow::on_nostarahaa_clicked()
 {
+    Nostoikkuna.paivitanosto(); //päivittää nostoikkunassa tiedot
+    Nostoikkuna.timer2->start(1000); //starttaa nostoikkunalle oman timerin
     ui->stackedWidget->setCurrentIndex(3); //aloitusnäytöstä nostotapahtumanäkymään
     timer->stop(); //tällä rimpsulla saadaan joka näkymälle aloittamaan 30 sekunnin aika alusta(aikakatkaisu)
     aika = 0;
@@ -113,6 +120,7 @@ void MainWindow::palaaAlkuun()
 
 void MainWindow::on_tilitapahtumat_clicked()
 {
+    Tilitapahtumaikkuna.paivitatilitapahtumat(); //päivittää tilitapahtumat ettei näytä jotain vanhaa tietoa esim ohjelman käynnistykseltä saakka
     ui->stackedWidget->setCurrentIndex(5); //aloitusnäytöstä tilitapahtumien näkymään
     timer->stop();
     aika = 0;
@@ -122,6 +130,7 @@ void MainWindow::on_tilitapahtumat_clicked()
 
 void MainWindow::on_naytasaldo_clicked()
 {
+    Saldoikkuna.paivitasaldo(); //päivittää saldonäkymän napauttaessa
     ui->stackedWidget->setCurrentIndex(4); //aloitusnäytöstä saldon näkymään
     timer->stop();
     aika = 0;
@@ -148,7 +157,7 @@ if(response_data.length()==0){
                 ui->virheviesti2->setText("Tunnus ja salasana eivät täsmää");
             }
             else {
-                //setWebToken("Bearer "+response_data); //nyt en tiiä lähteekö se webtoken mihinkään, en tiiä mitä tämän kohan pitäis tehä
+                setWebToken("Bearer "+response_data); //nyt en tiiä lähteekö se webtoken mihinkään, en tiiä mitä tämän kohan pitäis tehä
                 ui->stackedWidget->setCurrentIndex(2); // jos tunnusluku oli oikein niin siirrytään aloitusnäyttöön
                 aika = 0; //nollataan kulunut aika
                 timer->start(1000); //startataan timer
