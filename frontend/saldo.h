@@ -17,18 +17,25 @@ class saldo : public QWidget
 public:
     explicit saldo(QWidget *parent = nullptr);
     ~saldo();
-    void paivitasaldo();
+    void paivitasaldo(QString);
+    void tuoTiedot(QString, QString);
+
+    const QByteArray &getWebtoken() const;
+    void setWebtoken(const QByteArray &newWebtoken);
 
 private slots:
     void on_alkuun_2_clicked();
+    void saldoSlot (QNetworkReply *reply);
 
 private:
     Ui::saldo *ui;
     int asiakasnumero;
-    QNetworkAccessManager *loginManager;
-    QNetworkReply *reply;
-    QByteArray token;
+    QByteArray webtoken;
+    QString username;
 
+    QNetworkAccessManager *getManager;
+    QNetworkReply *reply;
+    QByteArray response_Data;
 signals:
     void PalaaKotinayttoon();
 };
