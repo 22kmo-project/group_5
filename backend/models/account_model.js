@@ -24,5 +24,8 @@ const account = {
       callback
     );
   }
+  debit_transfer: function (data, callback) {
+    return db.query('CALL withdraw(?,?)', [data.id, data.amount], callback);
+},
 };
 module.exports = account;
