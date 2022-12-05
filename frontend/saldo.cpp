@@ -16,6 +16,11 @@ saldo::~saldo()
     delete ui;
 }
 
+void saldo::paivitasaldo()
+{
+
+}
+
 void saldo::on_alkuun_2_clicked()
 {
     emit PalaaKotinayttoon(); //saldonäkymästä aloitusnäyttöön

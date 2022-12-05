@@ -20,3 +20,8 @@ void tilitapahtumat::on_alkuun_3_clicked()
     emit PalaaKotinayttoon(); //tilitapahtumanäkymästä aloitusnäyttöön
 }
 
+void tilitapahtumat::paivitatilitapahtumat()
+{
+
+}
+
