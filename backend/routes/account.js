@@ -58,4 +58,23 @@ function(request, response) {
   });
 });
 
+router.post('/withdraw', 
+function(request, response) {
+  account.cashWithdraw(request.body, function(err, dbResult) {
+    if (err) {
+      response.json(err);
+    } else {
+      if (dbResult[0][0]["success"] == 1) { 
+        console.log(dbResult[0]);
+        console.log("Rahat tulossa!\n");
+        response.json(dbResult[0]);
+      } else {
+        console.log(dbResult[0]);
+        console.log("Saldo ei riitä\n");
+        response.json(dbResult[0]);
+      }
+    }
+  });
+});
+
 module.exports = router;
