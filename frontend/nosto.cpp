@@ -27,7 +27,8 @@ void nosto::on_alkuun_clicked()
 
 
 void nosto::on_kakskyt_clicked()
-{
+{   //tarkista onko automaatissa rahhaa
+    //tarkista tililtä onko rahhaa
     QMessageBox::about(this, "Nosto onnistui", "Tililtäsi nostettiin 20 euroa"); //näyttöön tulee ilmoitus noston onnistumisesta/epäonnistumisesta
 }
 
