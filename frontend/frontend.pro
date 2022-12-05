@@ -12,12 +12,14 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    myurl.cpp \
     nosto.cpp \
     saldo.cpp \
     tilitapahtumat.cpp
 
 HEADERS += \
     mainwindow.h \
+    myurl.h \
     nosto.h \
     saldo.h \
     tilitapahtumat.h
