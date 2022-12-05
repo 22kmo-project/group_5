@@ -2,6 +2,9 @@
 #define SALDO_H
 
 #include <QWidget>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
 
 namespace Ui {
 class saldo;
@@ -22,6 +25,9 @@ private slots:
 private:
     Ui::saldo *ui;
     int asiakasnumero;
+    QNetworkAccessManager *loginManager;
+    QNetworkReply *reply;
+    QByteArray token;
 
 signals:
     void PalaaKotinayttoon();

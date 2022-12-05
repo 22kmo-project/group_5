@@ -71,16 +71,6 @@ void MainWindow::on_seuraava_2_clicked()
 
         reply = loginManager->post(request, QJsonDocument(jsonObj).toJson());
 
-    /*if(password == "0000"){
-    ui->stackedWidget->setCurrentIndex(2); // jos tunnusluku oli oikein niin siirrytään aloitusnäyttöön
-    aika = 0; //nollataan kulunut aika
-    timer->start(1000); //startataan timer
-    }
-    else{
-        ui->virheviesti2->setText("Tunnusluku virheellinen"); //jos tunnusluku oli virheellinen annetaan virheviesti
-        ui->korttinro_2->clear(); //line edit kenttä tyhjentyy
-    }*/
-
 
         ui->asiakasnimi->setText(username); //asiakkaan nimi aloitusnäytölle
 }
@@ -157,7 +147,7 @@ if(response_data.length()==0){
                 ui->virheviesti2->setText("Tunnus ja salasana eivät täsmää");
             }
             else {
-                setWebToken("Bearer "+response_data); //nyt en tiiä lähteekö se webtoken mihinkään, en tiiä mitä tämän kohan pitäis tehä
+                setWebToken("Bearer "+response_data); //webtokeni lähtee tuonne ja tallentuu sinne
                 ui->stackedWidget->setCurrentIndex(2); // jos tunnusluku oli oikein niin siirrytään aloitusnäyttöön
                 aika = 0; //nollataan kulunut aika
                 timer->start(1000); //startataan timer

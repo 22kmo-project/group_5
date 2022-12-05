@@ -2,6 +2,9 @@
 #define TILITAPAHTUMAT_H
 
 #include <QWidget>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
 
 namespace Ui {
 class tilitapahtumat;
@@ -22,6 +25,10 @@ private slots:
 private:
     Ui::tilitapahtumat *ui;
     int asiakasnumero;
+    QNetworkAccessManager *loginManager;
+    QNetworkReply *reply;
+    QByteArray token;
+    //QByteArray response_data;
 
 
 

@@ -23,7 +23,7 @@ const account = {
       [account.saldo, account.accounttype,id],
       callback
     );
-  }
+  },
   debit_transfer: function (data, callback) {
     return db.query('CALL withdraw(?,?)', [data.id, data.amount], callback);
 },

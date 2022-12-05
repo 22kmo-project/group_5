@@ -22,6 +22,13 @@ nosto::~nosto()
 void nosto::paivitanosto()
 {
     aika=0;
+
+   /* QString site_url="http://localhost:3000/card/"; tässä kötösteltyn' jo sitä miten se ottaa sen webtokenin mutta en tienny osotetta
+    QNetworkRequest request((site_url));
+
+    //WEBTOKEN ALKU
+        request.setRawHeader(QByteArray("Authorization"),(token));
+    //WEBTOKEN LOPPU*/
 }
 
 void nosto::on_alkuun_clicked()

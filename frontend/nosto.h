@@ -3,6 +3,9 @@
 
 #include <QWidget>
 #include <QTimer>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
 
 namespace Ui {
 class nosto;
@@ -22,6 +25,9 @@ private:
     Ui::nosto *ui;
     int asiakasnumero;
     int aika;
+    QNetworkAccessManager *loginManager;
+    QNetworkReply *reply;
+    QByteArray token;
 
 signals:
     void PalaaKotinayttoon();
