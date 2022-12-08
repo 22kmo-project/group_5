@@ -97,7 +97,7 @@ QPushButton:hover:!pressed{
    <property name="geometry">
     <rect>
      <x>350</x>
-     <y>150</y>
+     <y>130</y>
      <width>161</width>
      <height>41</height>
     </rect>
@@ -176,6 +176,31 @@ QPushButton:hover:!pressed{
       </property>
       <property name="text">
        <string>20€</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>200</y>
+     <width>144</width>
+     <height>66</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLineEdit" name="muusummaedit"/>
+    </item>
+    <item>
+     <widget class="QPushButton" name="muusumma">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>Nosta muu summa</string>
       </property>
      </widget>
     </item>

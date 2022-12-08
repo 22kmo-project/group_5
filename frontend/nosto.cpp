@@ -3,6 +3,7 @@
 #include "myurl.h"
 #include <QMessageBox>
 #include <QDebug>
+#include <QValidator>
 
 nosto::nosto(QWidget *parent) :
     QWidget(parent),
@@ -15,6 +16,7 @@ nosto::nosto(QWidget *parent) :
     timer2 = new QTimer(this); //luodaan tässä se ajastin että heittää ulos jos ei tietyn ajan sisään tee jotain
     connect(timer2, SIGNAL(timeout()), this, SLOT(ajastin2())); //timerin yhistäminen
             //timer2->start(1000);
+    ui->muusummaedit->setPlaceholderText("Syötä muu summa esim. 45");
 }
 
 nosto::~nosto()
@@ -159,3 +161,18 @@ void nosto::nostoSlot(QNetworkReply *reply)
     updateManager->deleteLater();
 
 }
+
+void nosto::on_muusumma_clicked()
+{
+    QValidator *validator = new QIntValidator(0, 999, this);
+    QLineEdit *edit = new QLineEdit(this);
+
+    // the edit lineedit will only accept integers between 0 and 999
+    edit->setValidator(validator);
+    muusumma=ui->muusummaedit->text();
+    bool ok;
+    muusumma.toInt(&ok, 10);
+    muusumma=amount;
+
+}
+
