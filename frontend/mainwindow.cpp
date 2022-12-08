@@ -110,7 +110,9 @@ void MainWindow::palaaAlkuun()
 
 void MainWindow::on_tilitapahtumat_clicked()
 {
-    Tilitapahtumaikkuna.paivitatilitapahtumat(); //päivittää tilitapahtumat ettei näytä jotain vanhaa tietoa esim ohjelman käynnistykseltä saakka
+    Tilitapahtumaikkuna.setWebToken(response_data); //homma webtokenin
+    Tilitapahtumaikkuna.paivitatilitapahtumat(username); //päivittää tilitapahtumat ettei näytä jotain vanhaa tietoa esim ohjelman käynnistykseltä saakka
+
     ui->stackedWidget->setCurrentIndex(5); //aloitusnäytöstä tilitapahtumien näkymään
     timer->stop();
     aika = 0;
