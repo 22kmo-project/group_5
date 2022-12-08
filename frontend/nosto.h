@@ -37,6 +37,7 @@ private:
     //void withdraw(int amount);
     QByteArray response_data;
     QString username;
+    QString muusumma;
 
 
 signals:
@@ -54,6 +55,7 @@ private slots:
     void on_sata_clicked();
     void on_kakssata_clicked();
     void on_viissata_clicked();
+    void on_muusumma_clicked();
 };
 
 #endif // NOSTO_H
