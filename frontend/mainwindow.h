@@ -60,5 +60,6 @@ private:
     QByteArray response_data;
     QByteArray token;
     QString username;
+    int amount;
 };
 #endif // MAINWINDOW_H
