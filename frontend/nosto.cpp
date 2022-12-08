@@ -107,6 +107,8 @@ void nosto::ajastin2()
 void nosto::on_muusumma_clicked()
 {
 //lue line editin summa
+    amount = ui->muusummaedit->text();
+
     //poista line editin määräämä summa tililtä
 }
 
