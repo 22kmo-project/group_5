@@ -12,6 +12,8 @@ nosto::nosto(QWidget *parent) :
     timer2 = new QTimer(this); //luodaan tässä se ajastin että heittää ulos jos ei tietyn ajan sisään tee jotain
     connect(timer2, SIGNAL(timeout()), this, SLOT(ajastin2())); //timerin yhistäminen
             //timer2->start(1000);
+
+    ui->muusummaedit->setPlaceholderText("Syötä summa esim. 45");
 }
 
 nosto::~nosto()
@@ -101,3 +103,10 @@ void nosto::ajastin2()
         emit PalaaKotinayttoon();
     }
    }
+
+void nosto::on_muusumma_clicked()
+{
+//lue line editin summa
+    //poista line editin määräämä summa tililtä
+}
+
