@@ -17,18 +17,24 @@ class tilitapahtumat : public QWidget
 public:
     explicit tilitapahtumat(QWidget *parent = nullptr);
     ~tilitapahtumat();
-    void paivitatilitapahtumat();
+    void paivitatilitapahtumat(QString);
+
+    const QByteArray &getWebToken() const;
+    void setWebToken(const QByteArray &newWebToken);
 
 private slots:
     void on_alkuun_3_clicked();
+    void tiliSlot(QNetworkReply *reply);
 
 private:
     Ui::tilitapahtumat *ui;
     int asiakasnumero;
-    QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
-    QByteArray token;
-    //QByteArray response_data;
+
+    QNetworkAccessManager *getManager;
+    QByteArray webToken;
+    QString username;
+    QByteArray response_data;
 
 
 

@@ -23,6 +23,8 @@ function(request,response){
   }
 });
 
+
+
 router.post('/', 
 function(request, response) {
   account.add(request.body, function(err, dbResult) {
@@ -58,9 +60,10 @@ function(request, response) {
   });
 });
 
-router.post('/withdraw', 
+/*router.post('/withdraw', 
 function(request, response) {
   account.cashWithdraw(request.body, function(err, dbResult) {
+    
     if (err) {
       response.json(err);
     } else {
@@ -75,6 +78,21 @@ function(request, response) {
       }
     }
   });
-});
+}); */
+
+router.put("/withdraw/:id", function (request, response) {
+  account.withdraw(request.params.id, request.body, function (err, dbResult) {
+    if (err) {
+      response.send(err);
+    } else {
+      if (dbResult.length > 0) {
+        response.send(false);
+      } else {
+        response.send(true);
+      }
+    }
+  });
+}
+);
 
 module.exports = router;

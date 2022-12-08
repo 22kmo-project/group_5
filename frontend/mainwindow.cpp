@@ -110,7 +110,9 @@ void MainWindow::palaaAlkuun()
 
 void MainWindow::on_tilitapahtumat_clicked()
 {
-    Tilitapahtumaikkuna.paivitatilitapahtumat(); //päivittää tilitapahtumat ettei näytä jotain vanhaa tietoa esim ohjelman käynnistykseltä saakka
+    Tilitapahtumaikkuna.setWebToken(response_data); //homma webtokenin
+    Tilitapahtumaikkuna.paivitatilitapahtumat(username); //päivittää tilitapahtumat ettei näytä jotain vanhaa tietoa esim ohjelman käynnistykseltä saakka
+
     ui->stackedWidget->setCurrentIndex(5); //aloitusnäytöstä tilitapahtumien näkymään
     timer->stop();
     aika = 0;
@@ -120,7 +122,9 @@ void MainWindow::on_tilitapahtumat_clicked()
 
 void MainWindow::on_naytasaldo_clicked()
 {
-    Saldoikkuna.paivitasaldo(); //päivittää saldonäkymän napauttaessa
+    Saldoikkuna.setWebtoken(response_data); //homma webtokenin saldoon sisälle
+    Saldoikkuna.paivitasaldo(username); //päivittää saldonäkymän napauttaessa
+
     ui->stackedWidget->setCurrentIndex(4); //aloitusnäytöstä saldon näkymään
     timer->stop();
     aika = 0;
@@ -179,4 +183,3 @@ void MainWindow::ajastin()
         timer->start();//kun oot ollu saldo, tilitapahtuma tai nostonäkymässä määrätyn ajan niin nakataa aloitusnäyttöön
     }
 }
-
