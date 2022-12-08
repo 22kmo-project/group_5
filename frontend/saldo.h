@@ -36,6 +36,7 @@ private:
     QNetworkAccessManager *getManager;
     QNetworkReply *reply;
     QByteArray response_Data;
+
 signals:
     void PalaaKotinayttoon();
 };
