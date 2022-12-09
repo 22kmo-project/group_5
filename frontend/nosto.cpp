@@ -146,7 +146,7 @@ void nosto::ajastin2()
 {
     qDebug() <<"update2..";
     aika ++; //lisätään kuluvaa aikaa
-    qDebug() <<aika;
+   // qDebug() <<aika;
     if(aika == 30){
         emit PalaaKotinayttoon();
     }

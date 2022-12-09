@@ -165,9 +165,9 @@ if(response_data.length()==0){
 
 void MainWindow::ajastin()
 {
-    qDebug() <<"update..";
+   // qDebug() <<"update..";
     aika ++; //lisätään kuluvaa aikaa
-    qDebug() <<aika;
+   // qDebug() <<aika;
 
     if(ui->stackedWidget->currentIndex()== 1 && aika > 10){
         ui->stackedWidget->setCurrentIndex(0);
