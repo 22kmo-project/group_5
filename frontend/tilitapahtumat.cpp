@@ -7,8 +7,6 @@ tilitapahtumat::tilitapahtumat(QWidget *parent) :
     ui(new Ui::tilitapahtumat)
 {
     ui->setupUi(this);
-    //ui->asiakasnro->setText("0004"); //tähän asiakkaan tiedot, kortin numero
-    //ui->tilitapahtumabox->setText("tähän tullee rajusti sitten niitä tilitapahtumia, tässä pittää sitten tarkastella sitä rivitystä varmaankin että ei tule pötköön");
 }
 
 tilitapahtumat::~tilitapahtumat()
@@ -18,7 +16,6 @@ tilitapahtumat::~tilitapahtumat()
 
 void tilitapahtumat::paivitatilitapahtumat(QString user)
 {
-
     QString wb=this->getWebToken();
     //qDebug()<<"tilitapahtumat" + wb;
     username = user;
@@ -52,7 +49,7 @@ void tilitapahtumat::tiliSlot(QNetworkReply *reply)
         tapahtumat+="card: "+QString::number(json_obj["idaccount"].toInt())+", date: "+json_obj["action_time"].toString()+", amount: "+QString::number(json_obj["amount"].toInt())+"\r";
     }
 
-    qDebug()<<tapahtumat;
+    //qDebug()<<tapahtumat;
 
     ui->tilitapahtumabox->setText(tapahtumat);
 
