@@ -82,7 +82,7 @@ void nosto::on_kakskyt_clicked()
     timer2->stop();
     aika = 0;
     timer2->start();
-    QMessageBox::about(this, "Nosto onnistui", "Tililtäsi nostettiin 20 euroa"); //näyttöön tulee ilmoitus noston onnistumisesta/epäonnistumisesta
+    QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 20 euroa"); //näyttöön tulee ilmoitus noston onnistumisesta/epäonnistumisesta
     amount = 20;
         this->paivitanosto(amount,username);
 }
@@ -93,7 +93,7 @@ void nosto::on_nelkyt_clicked()
     timer2->stop();
     aika = 0;
     timer2->start();
-    QMessageBox::about(this, "Nosto onnistui", "Tililtäsi nostettiin 40 euroa");
+    QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 40 euroa");
     amount = 40;
         this->paivitanosto(amount,username);
 }
@@ -104,7 +104,7 @@ void nosto::on_kuuskyt_clicked()
     timer2->stop();
     aika = 0;
     timer2->start();
-    QMessageBox::about(this, "Nosto onnistui", "Tililtäsi nostettiin 60 euroa");
+    QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 60 euroa");
     amount = 60;
         this->paivitanosto(amount,username);
 }
@@ -115,7 +115,7 @@ void nosto::on_sata_clicked()
     timer2->stop();
     aika = 0;
     timer2->start();
-    QMessageBox::about(this, "Nosto onnistui", "Tililtäsi nostettiin 100 euroa");
+    QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 100 euroa");
     amount = 100;
         this->paivitanosto(amount,username);
 }
@@ -126,7 +126,7 @@ void nosto::on_kakssata_clicked()
     timer2->stop();
     aika = 0;
     timer2->start();
-    QMessageBox::about(this, "Nosto onnistui", "Tililtäsi nostettiin 200 euroa");
+    QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 200 euroa");
     amount = 200;
         this->paivitanosto(amount,username);
 }
@@ -137,7 +137,7 @@ void nosto::on_viissata_clicked()
     timer2->stop();
     aika = 0;
     timer2->start();
-    QMessageBox::about(this, "Nosto onnistui", "Tililtäsi nostettiin 500 euroa");
+    QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 500 euroa");
     amount = 500;
         this->paivitanosto(amount,username);
 }
@@ -164,6 +164,9 @@ void nosto::nostoSlot(QNetworkReply *reply)
 
 void nosto::on_muusumma_clicked()
 {
+    timer2->stop();
+    aika = 0;
+    timer2->start();
     QValidator *validator = new QIntValidator(0, 999, this);
     QLineEdit *edit = new QLineEdit(this);
 
@@ -171,8 +174,10 @@ void nosto::on_muusumma_clicked()
     edit->setValidator(validator);
     muusumma=ui->muusummaedit->text();
     bool ok;
-    muusumma.toInt(&ok, 10);
-    muusumma=amount;
+    amount=muusumma.toInt(&ok, 10);
+    this->paivitanosto(amount, username);
+    qDebug()<<amount;
+    QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin euroa"); //tuohon väliin vielä amount muuttujan arvo
 
 }
 

@@ -181,7 +181,7 @@ QPushButton:hover:!pressed{
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>360</x>
@@ -192,7 +192,11 @@ QPushButton:hover:!pressed{
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLineEdit" name="muusummaedit"/>
+     <widget class="QLineEdit" name="muusummaedit">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QPushButton" name="muusumma">
