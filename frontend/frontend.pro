@@ -1,4 +1,5 @@
 QT       += core gui
+QT +=network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -11,12 +12,14 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    myurl.cpp \
     nosto.cpp \
     saldo.cpp \
     tilitapahtumat.cpp
 
 HEADERS += \
     mainwindow.h \
+    myurl.h \
     nosto.h \
     saldo.h \
     tilitapahtumat.h
@@ -31,3 +34,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resources.qrc

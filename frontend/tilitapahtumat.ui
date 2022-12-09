@@ -6,15 +6,36 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>550</width>
-    <height>408</height>
+    <width>600</width>
+    <height>350</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(185, 255, 203);</string>
+   <string notr="true">#tilitapahtumat{
+	border-image: url(:/images/taustabank.png);}
+QPushButton{
+ padding: 10px 20px;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+	background-color: rgb(48, 122, 70);
+  border: none;
+  border-radius: 15px;
+}
+QPushButton:pressed{
+	
+	background-color: rgb(40, 103, 59);
+}
+QPushButton:hover:!pressed{
+	background-color: rgb(89, 226, 130);}
+
+
+</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -37,10 +58,10 @@
   <widget class="QTextBrowser" name="tilitapahtumabox">
    <property name="geometry">
     <rect>
-     <x>70</x>
+     <x>30</x>
      <y>100</y>
-     <width>171</width>
-     <height>241</height>
+     <width>291</width>
+     <height>201</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -57,18 +78,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">display: inline-block;
-  padding: 10px 20px;
-  font-size: 12px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Palaa aloitusnäyttöön</string>

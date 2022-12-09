@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>603</width>
-    <height>395</height>
+    <width>600</width>
+    <height>350</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,6 +17,29 @@
    <string notr="true">background-color: rgb(185, 255, 203);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+ padding: 10px 20px;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+	background-color: rgb(48, 122, 70);
+  border: none;
+  border-radius: 15px;
+}
+QPushButton:pressed{
+	
+	background-color: rgb(40, 103, 59);
+}
+QPushButton:hover:!pressed{
+	background-color: rgb(89, 226, 130);}
+
+#centralwidget{
+border-image: url(:/images/taustabank.png);
+}</string>
+   </property>
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
@@ -27,12 +50,31 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(185, 255, 203);</string>
+     <string notr="true">background-color: transparent;</string>
     </property>
     <property name="currentIndex">
      <number>2</number>
     </property>
     <widget class="QWidget" name="page">
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+ padding: 10px 20px;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+	background-color: rgb(48, 122, 70);
+  border: none;
+  border-radius: 15px;
+}
+QPushButton:pressed{
+	
+	background-color: rgb(40, 103, 59);
+}
+QPushButton:hover:!pressed{
+	background-color: rgb(89, 226, 130);}</string>
+     </property>
      <widget class="QLabel" name="virheviesti1">
       <property name="geometry">
        <rect>
@@ -64,7 +106,7 @@
          <widget class="QLabel" name="label_5">
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>9</pointsize>
            </font>
           </property>
           <property name="text">
@@ -79,11 +121,11 @@
          <widget class="QLabel" name="label">
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>10</pointsize>
            </font>
           </property>
           <property name="text">
-           <string>Kirjaudu sisään, ole hyvä</string>
+           <string>Syötä 4 numeroinen kortin numero</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -120,18 +162,7 @@
         <item>
          <widget class="QPushButton" name="seuraava">
           <property name="styleSheet">
-           <string notr="true">display: inline-block;
-  padding: 10px 20px;
-  font-size: 12px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;</string>
+           <string notr="true"/>
           </property>
           <property name="text">
            <string>Seuraava</string>
@@ -143,6 +174,25 @@
      </widget>
     </widget>
     <widget class="QWidget" name="page_1">
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+ padding: 10px 20px;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+	background-color: rgb(48, 122, 70);
+  border: none;
+  border-radius: 15px;
+}
+QPushButton:pressed{
+	
+	background-color: rgb(40, 103, 59);
+}
+QPushButton:hover:!pressed{
+	background-color: rgb(89, 226, 130);}</string>
+     </property>
      <widget class="QLabel" name="virheviesti2">
       <property name="geometry">
        <rect>
@@ -230,18 +280,7 @@
         <item>
          <widget class="QPushButton" name="seuraava_2">
           <property name="styleSheet">
-           <string notr="true">display: inline-block;
-  padding: 10px 20px;
-  font-size: 12px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;</string>
+           <string notr="true"/>
           </property>
           <property name="text">
            <string>Seuraava</string>
@@ -253,6 +292,25 @@
      </widget>
     </widget>
     <widget class="QWidget" name="page_2">
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+ padding: 10px 20px;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+	background-color: rgb(48, 122, 70);
+  border: none;
+  border-radius: 15px;
+}
+QPushButton:pressed{
+	
+	background-color: rgb(40, 103, 59);
+}
+QPushButton:hover:!pressed{
+	background-color: rgb(89, 226, 130);}</string>
+     </property>
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
@@ -266,18 +324,7 @@
        <item>
         <widget class="QPushButton" name="tilitapahtumat">
          <property name="styleSheet">
-          <string notr="true">display: inline-block;
-  padding: 10px 20px;
-  font-size: 12px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;</string>
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>Tilitapahtumat</string>
@@ -287,18 +334,7 @@
        <item>
         <widget class="QPushButton" name="nostarahaa">
          <property name="styleSheet">
-          <string notr="true">display: inline-block;
-  padding: 10px 20px;
-  font-size: 12px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;</string>
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>Nosta rahaa</string>
@@ -308,18 +344,7 @@
        <item>
         <widget class="QPushButton" name="naytasaldo">
          <property name="styleSheet">
-          <string notr="true">display: inline-block;
-  padding: 10px 20px;
-  font-size: 12px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;</string>
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>Näytä saldo</string>
@@ -376,36 +401,12 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true"> padding: 10px 20px;
-  font-size: 12px;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Kirjaudu ulos</string>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>603</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuBankSimu">
-    <property name="title">
-     <string>BankSimu</string>
-    </property>
-   </widget>
-   <addaction name="menuBankSimu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

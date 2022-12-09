@@ -6,15 +6,38 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>585</width>
-    <height>421</height>
+    <width>600</width>
+    <height>350</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(185, 255, 203);</string>
+   <string notr="true">#nosto{
+border-image: url(:/images/taustabank.png);
+}
+QMessageBox{
+	background-color: rgb(72, 183, 106);
+}
+QPushButton{
+ padding: 10px 20px;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+	background-color: rgb(48, 122, 70);
+  border: none;
+  border-radius: 15px;
+}
+QPushButton:pressed{
+	
+	background-color: rgb(40, 103, 59);
+}
+QPushButton:hover:!pressed{
+	background-color: rgb(89, 226, 130);}
+</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -74,24 +97,13 @@
    <property name="geometry">
     <rect>
      <x>350</x>
-     <y>150</y>
+     <y>130</y>
      <width>161</width>
      <height>41</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">display: inline-block;
-  padding: 10px 20px;
-  font-size: 12px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Palaa aloitusnäyttöön</string>
@@ -110,18 +122,7 @@
     <item row="0" column="1">
      <widget class="QPushButton" name="sata">
       <property name="styleSheet">
-       <string notr="true">display: inline-block;
-  padding: 10px 20px;
-  font-size: 12px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>100€</string>
@@ -131,18 +132,7 @@
     <item row="1" column="0">
      <widget class="QPushButton" name="nelkyt">
       <property name="styleSheet">
-       <string notr="true">display: inline-block;
-  padding: 10px 20px;
-  font-size: 12px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>40€</string>
@@ -152,18 +142,7 @@
     <item row="2" column="0">
      <widget class="QPushButton" name="kuuskyt">
       <property name="styleSheet">
-       <string notr="true">display: inline-block;
-  padding: 10px 20px;
-  font-size: 12px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>60€</string>
@@ -173,18 +152,7 @@
     <item row="1" column="1">
      <widget class="QPushButton" name="kakssata">
       <property name="styleSheet">
-       <string notr="true">display: inline-block;
-  padding: 10px 20px;
-  font-size: 12px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>200€</string>
@@ -194,18 +162,7 @@
     <item row="2" column="1">
      <widget class="QPushButton" name="viissata">
       <property name="styleSheet">
-       <string notr="true">display: inline-block;
-  padding: 10px 20px;
-  font-size: 12px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>500€</string>
@@ -215,21 +172,35 @@
     <item row="0" column="0">
      <widget class="QPushButton" name="kakskyt">
       <property name="styleSheet">
-       <string notr="true">display: inline-block;
-  padding: 10px 20px;
-  font-size: 12px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>20€</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>200</y>
+     <width>144</width>
+     <height>66</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLineEdit" name="muusummaedit"/>
+    </item>
+    <item>
+     <widget class="QPushButton" name="muusumma">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>Nosta muu summa</string>
       </property>
      </widget>
     </item>
