@@ -125,6 +125,7 @@ void MainWindow::on_naytasaldo_clicked()
 {
     Saldoikkuna.setWebtoken(response_data); //homma webtokenin saldoon sisälle
     Saldoikkuna.paivitasaldo(username); //päivittää saldonäkymän napauttaessa
+    Saldoikkuna.paivitatilitapahtumat(username); //päivittää tilitapahtumat
 
     ui->stackedWidget->setCurrentIndex(4); //aloitusnäytöstä saldon näkymään
     timer->stop();
