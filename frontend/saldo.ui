@@ -55,9 +55,9 @@ QPushButton:hover:!pressed{
   <widget class="QTextBrowser" name="tilitapahtumabox">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>30</x>
      <y>100</y>
-     <width>151</width>
+     <width>211</width>
      <height>241</height>
     </rect>
    </property>

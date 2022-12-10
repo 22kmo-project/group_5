@@ -18,6 +18,7 @@ public:
     explicit saldo(QWidget *parent = nullptr);
     ~saldo();
     void paivitasaldo(QString);
+    void paivitatilitapahtumat(QString);
     void tuoTiedot(QString, QString);
 
     const QByteArray &getWebtoken() const;
@@ -26,6 +27,7 @@ public:
 private slots:
     void on_alkuun_2_clicked();
     void saldoSlot (QNetworkReply *reply);
+    void tilitapahtumaSlot(QNetworkReply *reply);
 
 private:
     Ui::saldo *ui;
