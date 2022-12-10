@@ -60,28 +60,25 @@ function(request, response) {
   });
 });
 
-/*router.post('/withdraw', 
-function(request, response) {
-  account.cashWithdraw(request.body, function(err, dbResult) {
-    
-    if (err) {
-      response.json(err);
-    } else {
-      if (dbResult[0][0]["success"] == 1) { 
-        console.log(dbResult[0]);
-        console.log("Rahat tulossa!\n");
-        response.json(dbResult[0]);
-      } else {
-        console.log(dbResult[0]);
-        console.log("Saldo ei riitä\n");
-        response.json(dbResult[0]);
-      }
-    }
-  });
-}); */
+
 
 router.put("/withdraw/:id", function (request, response) {
   account.withdraw(request.params.id, request.body, function (err, dbResult) {
+    if (err) {
+      response.send(err);
+    } else {
+      if (dbResult.length > 0) {
+        response.send(false);
+      } else {
+        response.send(true);
+      }
+    }
+  });
+}
+
+);
+router.put("/debit_transfer/:id", function (request, response) {
+  account.debit_transfer(request.params.id, request.body, function (err, dbResult) {
     if (err) {
       response.send(err);
     } else {
