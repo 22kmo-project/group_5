@@ -28,7 +28,7 @@ void nosto::paivitanosto(int, QString user)
 {
     //aika=0;
     username=user;
-    ui->asiakasnro->setText(username);
+
 
     QJsonObject jsonObj;
        jsonObj.insert("amount",amount);
@@ -69,6 +69,7 @@ void nosto::tilintyyppi(int valinta)
 void nosto::paivitasaldo(QString user)
 {
     username=user;
+    ui->asiakasnro->setText(username);
 
     QString site_url=myUrl::getBaseUrl()+"/account/"+username;
     QNetworkRequest request((site_url));
@@ -88,6 +89,7 @@ void nosto::paivitasaldo(QString user)
 void nosto::on_alkuun_clicked()
 {
     timer2->stop();
+    amount=0;
     emit PalaaKotinayttoon(); //nostotapahtumien ikkunasta takaisin aloitusnäyttöön
 }
 
@@ -98,9 +100,10 @@ void nosto::on_kakskyt_clicked()
     timer2->stop();
     aika = 0;
     timer2->start();
-    amount = 20;
+
     qDebug()<< saldo;
     qDebug()<< accounttype;
+    amount = 20;
     if(saldo<amount && accounttype=="\u0002") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
     {QMessageBox::critical(this, "Nosto ei onnistu", "Tili ei voi mennä miinukselle");
     }
@@ -117,11 +120,11 @@ void nosto::on_nelkyt_clicked()
     timer2->stop();
     aika = 0;
     timer2->start();
+    amount = 40;
     if(saldo<amount && accounttype=="\u0002") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
     {QMessageBox::critical(this, "Nosto ei onnistu", "Tili ei voi mennä miinukselle");
     }
     else{
-        amount = 40;
         QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 40 euroa");
         this->paivitanosto(amount,username);
         amount=0;
@@ -134,11 +137,11 @@ void nosto::on_kuuskyt_clicked()
     timer2->stop();
     aika = 0;
     timer2->start();
+    amount = 60;
     if(saldo<amount && accounttype=="\u0002") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
     {QMessageBox::critical(this, "Nosto ei onnistu", "Tili ei voi mennä miinukselle");
     }
     else{
-        amount = 60;
         QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 60 euroa");
         this->paivitanosto(amount,username);
         amount=0;
@@ -152,11 +155,11 @@ void nosto::on_sata_clicked()
     timer2->stop();
     aika = 0;
     timer2->start();
+    amount = 100;
     if(saldo<amount && accounttype=="\u0002") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
     {QMessageBox::critical(this, "Nosto ei onnistu", "Tili ei voi mennä miinukselle");
     }
     else{
-        amount = 100;
         QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 100 euroa");
         this->paivitanosto(amount,username);
          amount=0;
@@ -169,11 +172,11 @@ void nosto::on_kakssata_clicked()
     timer2->stop();
     aika = 0;
     timer2->start();
+    amount = 200;
     if(saldo<amount && accounttype=="\u0002") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
     {QMessageBox::critical(this, "Nosto ei onnistu", "Tili ei voi mennä miinukselle");
     }
     else{
-        amount = 200;
         QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 200 euroa");
         this->paivitanosto(amount,username);
          amount=0;
@@ -186,11 +189,11 @@ void nosto::on_viissata_clicked()
     timer2->stop();
     aika = 0;
     timer2->start();
+    amount = 500;
     if(saldo<amount && accounttype=="\u0002") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
     {QMessageBox::critical(this, "Nosto ei onnistu", "Tili ei voi mennä miinukselle");
     }
     else{
-        amount = 500;
         QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 500 euroa");
         this->paivitanosto(amount,username);
         amount=0;
@@ -208,6 +211,7 @@ void nosto::ajastin2()
 void nosto::nostoSlot(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
+    qDebug()<<response_data;
 
     //if(response_data== "true" && amount!=0){
      // QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin euroa");
