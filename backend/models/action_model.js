@@ -2,7 +2,7 @@ const db = require('../database');
 
 const action = {
   getById: function(id, callback) {
-    return db.query('select idaccount, action_time, amount from action where idaccount=? order by action_time limit 10', [id], callback);
+    return db.query('select idaccount, action_time, amount from action where idaccount=? order by action_time desc limit 10', [id], callback);
   },
   getAll: function(callback) {
     return db.query('select * from action', callback);

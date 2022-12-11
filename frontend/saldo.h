@@ -34,7 +34,7 @@ private:
     int asiakasnumero;
     QByteArray webtoken;
     QString username;
-
+    QString tilinsaldo;
     QNetworkAccessManager *getManager;
     QNetworkReply *reply;
     QByteArray response_Data;
