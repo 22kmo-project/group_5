@@ -108,9 +108,7 @@ void MainWindow::on_nostarahaa_clicked()
 {
     amount=0;
     Nostoikkuna.setWebtoken(response_data);
-    Nostoikkuna.paivitanosto(amount,username); //päivittää nostoikkunassa tiedot
     Nostoikkuna.paivitasaldo(username);
-
     Nostoikkuna.timer2->start(1000); //starttaa nostoikkunalle oman timerin
     ui->stackedWidget->setCurrentIndex(3); //aloitusnäytöstä nostotapahtumanäkymään
     timer->stop(); //tällä rimpsulla saadaan joka näkymälle aloittamaan 30 sekunnin aika alusta(aikakatkaisu)
