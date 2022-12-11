@@ -109,7 +109,8 @@ void MainWindow::on_nostarahaa_clicked()
     amount=0;
     Nostoikkuna.setWebtoken(response_data);
     Nostoikkuna.paivitanosto(amount,username); //päivittää nostoikkunassa tiedot
-    Nostoikkuna.tilintyyppi(valinta);
+    Nostoikkuna.paivitasaldo(username);
+
     Nostoikkuna.timer2->start(1000); //starttaa nostoikkunalle oman timerin
     ui->stackedWidget->setCurrentIndex(3); //aloitusnäytöstä nostotapahtumanäkymään
     timer->stop(); //tällä rimpsulla saadaan joka näkymälle aloittamaan 30 sekunnin aika alusta(aikakatkaisu)
@@ -231,15 +232,18 @@ void MainWindow::tilityyppiSlot(QNetworkReply *reply2)
         if (msgBox->clickedButton() == creditButton) {
             valinta=1;
             ui->stackedWidget->setCurrentIndex(2);
+                Nostoikkuna.tilintyyppi(valinta);
         } else if (msgBox->clickedButton() == debitButton) {
             valinta=2;
             ui->stackedWidget->setCurrentIndex(2);
+                Nostoikkuna.tilintyyppi(valinta);
         }
         //QMessageBox::information(this, "Valitse tilityyppi","Valitse käytettävä tilityyppi");
     }
     else{
         valinta=2;
         ui->stackedWidget->setCurrentIndex(2);
+            Nostoikkuna.tilintyyppi(valinta);
     }
 }
 

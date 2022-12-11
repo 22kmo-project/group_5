@@ -69,7 +69,6 @@ void nosto::tilintyyppi(int valinta)
 void nosto::paivitasaldo(QString user)
 {
     username=user;
-    ui->asiakasnro->setText(username);
 
     QString site_url=myUrl::getBaseUrl()+"/account/"+username;
     QNetworkRequest request((site_url));
@@ -78,7 +77,7 @@ void nosto::paivitasaldo(QString user)
     //WEBTOKEN LOPPU
     getManager = new QNetworkAccessManager(this);
 
-    connect(getManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(saldoSlot(QNetworkReply*)));
+    connect(getManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(saldoslot(QNetworkReply*)));
 
     reply = getManager->get(request);
     //bool ok;
@@ -101,7 +100,8 @@ void nosto::on_kakskyt_clicked()
     timer2->start();
     amount = 20;
     qDebug()<< saldo;
-    if(saldo<amount && accounttype=="2") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
+    qDebug()<< accounttype;
+    if(saldo<amount && accounttype=="\u0002") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
     {QMessageBox::critical(this, "Nosto ei onnistu", "Tili ei voi mennä miinukselle");
     }
     else{
@@ -118,7 +118,7 @@ void nosto::on_nelkyt_clicked()
     aika = 0;
     timer2->start();
     amount = 40;
-    if(saldo<amount && accounttype=="2") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
+    if(saldo<amount && accounttype=="\u0002") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
     {QMessageBox::critical(this, "Nosto ei onnistu", "Tili ei voi mennä miinukselle");
     }
     else{
@@ -135,7 +135,7 @@ void nosto::on_kuuskyt_clicked()
     aika = 0;
     timer2->start();
     amount = 60;
-    if(saldo<amount && accounttype=="2") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
+    if(saldo<amount && accounttype=="\u0002") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
     {QMessageBox::critical(this, "Nosto ei onnistu", "Tili ei voi mennä miinukselle");
     }
     else{
@@ -153,7 +153,7 @@ void nosto::on_sata_clicked()
     aika = 0;
     timer2->start();
     amount = 100;
-    if(saldo<amount && accounttype=="2") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
+    if(saldo<amount && accounttype=="\u0002") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
     {QMessageBox::critical(this, "Nosto ei onnistu", "Tili ei voi mennä miinukselle");
     }
     else{
@@ -171,7 +171,7 @@ void nosto::on_kakssata_clicked()
     timer2->start();
     //QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 200 euroa");
     amount = 200;
-    if(saldo<amount && accounttype=="2") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
+    if(saldo<amount && accounttype=="\u0002") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
     {QMessageBox::critical(this, "Nosto ei onnistu", "Tili ei voi mennä miinukselle");
     }
     else{
@@ -189,7 +189,7 @@ void nosto::on_viissata_clicked()
     timer2->start();
     //QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 500 euroa");
     amount = 500;
-    if(saldo<amount && accounttype=="2") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
+    if(saldo<amount && accounttype=="\u0002") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
     {QMessageBox::critical(this, "Nosto ei onnistu", "Tili ei voi mennä miinukselle");
     }
     else{
@@ -237,7 +237,7 @@ void nosto::on_muusumma_clicked()
     muusumma=ui->muusummaedit->text();
     bool ok;
     amount=muusumma.toInt(&ok, 10);
-    if(saldo<amount && accounttype==2) //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
+    if(saldo<amount && accounttype=="\u0002") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
     {QMessageBox::critical(this, "Nosto ei onnistu", "Tili ei voi mennä miinukselle");
     }
     else{
@@ -260,7 +260,7 @@ void nosto::saldoslot(QNetworkReply *reply)
     }
     bool ok;
     saldo=tilinsaldo.toInt(&ok, 10);
-
+    qDebug()<<saldo;
     reply->deleteLater();
     getManager->deleteLater();
 }

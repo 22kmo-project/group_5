@@ -65,7 +65,7 @@ void saldo::saldoSlot(QNetworkReply *reply)
     }
 
     //qDebug()<<saldo;
-
+    ui->tilinsaldo->clear();
     ui->tilinsaldo->setText(tilinsaldo);
 
     reply->deleteLater();
