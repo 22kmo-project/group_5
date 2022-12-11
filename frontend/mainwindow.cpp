@@ -40,7 +40,7 @@ void MainWindow::setWebToken(const QByteArray &newWebToken)
 void MainWindow::on_seuraava_clicked()
 {
     username = ui->korttinro->text(); //line edittiin laitettu korttinumero syötetään username muuttujaan
-    if(username.length() == 1){
+    if(username.length() == 4){
     ui->stackedWidget->setCurrentIndex(1); //jos kortin numero on oikein siirrytään seuraavaan näkymään
     aika = 0; //nollataan kulunut aika
     timer->start(1000); //startataan timer

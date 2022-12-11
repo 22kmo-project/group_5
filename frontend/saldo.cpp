@@ -16,7 +16,7 @@ saldo::~saldo()
 
 void saldo::paivitasaldo(QString user)
 {
-    username=user;
+    username= user;
     ui->asiakasnro->setText(username);
 
     QString site_url=myUrl::getBaseUrl()+"/account/"+username;
@@ -64,7 +64,7 @@ void saldo::saldoSlot(QNetworkReply *reply)
         saldo+=QString::number(json_obj["saldo"].toInt());
     }
 
-    //qDebug()<<saldo;
+    qDebug()<<saldo;
 
     ui->tilinsaldo->setText(saldo);
 
@@ -84,7 +84,7 @@ void saldo::tilitapahtumaSlot(QNetworkReply *reply)
         tapahtumat+="card: "+QString::number(json_obj["idaccount"].toInt())+", date: "+json_obj["action_time"].toString()+",\r amount: "+QString::number(json_obj["amount"].toInt())+"\r\r";
     }
 
-    //qDebug()<<tapahtumat;
+    qDebug()<<tapahtumat;
 
     ui->tilitapahtumabox->setText(tapahtumat);
 

@@ -4,6 +4,7 @@
 #include <QMessageBox>
 #include <QDebug>
 #include <QValidator>
+#include <saldo.h>
 
 nosto::nosto(QWidget *parent) :
     QWidget(parent),
@@ -77,8 +78,17 @@ void nosto::on_alkuun_clicked()
 
 
 void nosto::on_kakskyt_clicked()
-{   //tarkista onko automaatissa rahhaa
-    //tarkista tililtä onko rahhaa
+
+{   /*if (saldo< amount)                       //tarkista tililtä onko rahhaa
+    {
+      QMessageBox::information(this, "Nosto epäonnistui", "Tililtäsi ei ole riittävästi rahaa")
+    }
+     else {                                      //tarkista onko automaatissa rahhaa
+          if ( automaatin saldo < amount)
+           QMessageBox::information(this, "Nosto epäonnistui", "Automaatissa ei ole riittävästi rahaa");
+           }
+
+      else { */
     timer2->stop();
     aika = 0;
     timer2->start();
@@ -86,6 +96,7 @@ void nosto::on_kakskyt_clicked()
     amount = 20;
         this->paivitanosto(amount,username);
 }
+// }
 
 
 void nosto::on_nelkyt_clicked()
@@ -144,7 +155,7 @@ void nosto::on_viissata_clicked()
 
 void nosto::ajastin2()
 {
-    qDebug() <<"update2..";
+    //qDebug() <<"update2..";
     aika ++; //lisätään kuluvaa aikaa
    // qDebug() <<aika;
     if(aika == 30){

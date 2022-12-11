@@ -32,7 +32,7 @@ const account = {
 }, 
 debit_transfer: function (idaccount, data, callback) {
   let doubleAmount=parseFloat(data.amount);
-  return db.query('CALL withdraw(?,?)', [idaccount, doubleAmount], callback);
+  return db.query('CALL debit_transfer(?,?)', [idaccount, doubleAmount], callback);
 },
 };
 module.exports = account;
