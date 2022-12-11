@@ -211,7 +211,7 @@ void MainWindow::tilityyppiSlot(QNetworkReply *reply2)
     QString tilityyppi;
     foreach (const QJsonValue &value, json_array) { //vääntää json:in QStringiksi
         QJsonObject json_obj = value.toObject();
-        tilityyppi+=QString::number(json_obj["accounttype"].toInt());
+        tilityyppi=QString::number(json_obj["accounttype"].toInt());
     }
     valitsetili=tilityyppi;
     //qDebug()<<"tilin tyyppi on";

@@ -61,7 +61,7 @@ void saldo::saldoSlot(QNetworkReply *reply)
 
     foreach (const QJsonValue &value, json_array) { //vääntää json:in QStringiksi
         QJsonObject json_obj = value.toObject();
-        tilinsaldo+=QString::number(json_obj["saldo"].toInt());
+        tilinsaldo=QString::number(json_obj["saldo"].toInt());
     }
 
     //qDebug()<<saldo;

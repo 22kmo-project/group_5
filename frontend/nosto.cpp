@@ -117,11 +117,11 @@ void nosto::on_nelkyt_clicked()
     timer2->stop();
     aika = 0;
     timer2->start();
-    amount = 40;
     if(saldo<amount && accounttype=="\u0002") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
     {QMessageBox::critical(this, "Nosto ei onnistu", "Tili ei voi mennä miinukselle");
     }
     else{
+        amount = 40;
         QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 40 euroa");
         this->paivitanosto(amount,username);
         amount=0;
@@ -134,11 +134,11 @@ void nosto::on_kuuskyt_clicked()
     timer2->stop();
     aika = 0;
     timer2->start();
-    amount = 60;
     if(saldo<amount && accounttype=="\u0002") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
     {QMessageBox::critical(this, "Nosto ei onnistu", "Tili ei voi mennä miinukselle");
     }
     else{
+        amount = 60;
         QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 60 euroa");
         this->paivitanosto(amount,username);
         amount=0;
@@ -152,11 +152,11 @@ void nosto::on_sata_clicked()
     timer2->stop();
     aika = 0;
     timer2->start();
-    amount = 100;
     if(saldo<amount && accounttype=="\u0002") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
     {QMessageBox::critical(this, "Nosto ei onnistu", "Tili ei voi mennä miinukselle");
     }
     else{
+        amount = 100;
         QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 100 euroa");
         this->paivitanosto(amount,username);
          amount=0;
@@ -169,12 +169,11 @@ void nosto::on_kakssata_clicked()
     timer2->stop();
     aika = 0;
     timer2->start();
-    //QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 200 euroa");
-    amount = 200;
     if(saldo<amount && accounttype=="\u0002") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
     {QMessageBox::critical(this, "Nosto ei onnistu", "Tili ei voi mennä miinukselle");
     }
     else{
+        amount = 200;
         QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 200 euroa");
         this->paivitanosto(amount,username);
          amount=0;
@@ -187,12 +186,11 @@ void nosto::on_viissata_clicked()
     timer2->stop();
     aika = 0;
     timer2->start();
-    //QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 500 euroa");
-    amount = 500;
     if(saldo<amount && accounttype=="\u0002") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
     {QMessageBox::critical(this, "Nosto ei onnistu", "Tili ei voi mennä miinukselle");
     }
     else{
+        amount = 500;
         QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 500 euroa");
         this->paivitanosto(amount,username);
         amount=0;
@@ -256,7 +254,7 @@ void nosto::saldoslot(QNetworkReply *reply)
 
     foreach (const QJsonValue &value, json_array) { //vääntää json:in QStringiksi
         QJsonObject json_obj = value.toObject();
-        tilinsaldo+=QString::number(json_obj["saldo"].toInt());
+        tilinsaldo=QString::number(json_obj["saldo"].toInt());
     }
     bool ok;
     saldo=tilinsaldo.toInt(&ok, 10);

@@ -20,7 +20,7 @@ public:
     void paivitasaldo(QString);
     void paivitatilitapahtumat(QString);
     void tuoTiedot(QString, QString);
-    QString tilinsaldo;
+
     const QByteArray &getWebtoken() const;
     void setWebtoken(const QByteArray &newWebtoken);
 
@@ -34,7 +34,7 @@ private:
     int asiakasnumero;
     QByteArray webtoken;
     QString username;
-
+    QString tilinsaldo;
     QNetworkAccessManager *getManager;
     QNetworkReply *reply;
     QByteArray response_Data;
