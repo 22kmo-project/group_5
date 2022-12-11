@@ -16,8 +16,8 @@ var accountRouter = require('./routes/account');
 
 var customerRouter = require('./routes/customer');
 
-var loginRouter =require('./routes/login')
-
+var loginRouter =require('./routes/login');
+var saldoactionRouter =require('./routes/saldoaction');
 
 
 var app = express();
@@ -42,6 +42,7 @@ app.use('/action', actionRouter);
 app.use('/account', accountRouter);
 
 app.use('/customer', customerRouter);
+app.use('/saldoaction', saldoactionRouter);
 
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization']
