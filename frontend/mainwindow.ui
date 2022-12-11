@@ -6,19 +6,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>350</height>
+    <width>614</width>
+    <height>355</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>BankSimul group 5</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(185, 255, 203);</string>
+   <string notr="true">
+
+QMainWindow{background-color: rgb(72, 183, 106)}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">QPushButton{
+    <string notr="true">
+QPushButton{
  padding: 10px 20px;
   font-size: 12px;
   text-align: center;
@@ -53,7 +56,7 @@ border-image: url(:/images/taustabank.png);
      <string notr="true">background-color: transparent;</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page">
      <property name="styleSheet">
@@ -224,7 +227,7 @@ QPushButton:hover:!pressed{
          <widget class="QLabel" name="label_9">
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>9</pointsize>
            </font>
           </property>
           <property name="text">
@@ -243,7 +246,7 @@ QPushButton:hover:!pressed{
            </font>
           </property>
           <property name="text">
-           <string>Kirjaudu sisään, ole hyvä</string>
+           <string>Syötä tunnusluku</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -367,7 +370,7 @@ QPushButton:hover:!pressed{
       </property>
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="text">
@@ -385,7 +388,7 @@ QPushButton:hover:!pressed{
       </property>
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="text">

@@ -39,7 +39,6 @@ private:
     QString username;
     QString muusumma;
 
-
 signals:
     void PalaaKotinayttoon();
 

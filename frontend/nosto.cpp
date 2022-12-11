@@ -64,10 +64,8 @@ const QByteArray &nosto::getWebtoken() const
 
 void nosto::setWebtoken(const QByteArray &newWebtoken)
 {
- webtoken = newWebtoken;
+    webtoken = newWebtoken;
 }
-
-
 
 void nosto::on_alkuun_clicked()
 {
