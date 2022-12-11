@@ -83,7 +83,7 @@ void saldo::tilitapahtumaSlot(QNetworkReply *reply)
         tapahtumat+="card: "+QString::number(json_obj["idaccount"].toInt())+", date: "+json_obj["action_time"].toString()+",\r amount: "+QString::number(json_obj["amount"].toInt())+"\r\r";
     }
 
-    //qDebug()<<tapahtumat;
+    qDebug()<<tapahtumat;
 
     ui->tilitapahtumabox->setText(tapahtumat);
 
