@@ -58,15 +58,15 @@ void saldo::saldoSlot(QNetworkReply *reply)
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
 
-    QString saldo;
+
     foreach (const QJsonValue &value, json_array) { //vääntää json:in QStringiksi
         QJsonObject json_obj = value.toObject();
-        saldo+=QString::number(json_obj["saldo"].toInt());
+        tilinsaldo+=QString::number(json_obj["saldo"].toInt());
     }
 
     //qDebug()<<saldo;
 
-    ui->tilinsaldo->setText(saldo);
+    ui->tilinsaldo->setText(tilinsaldo);
 
     reply->deleteLater();
     getManager->deleteLater();

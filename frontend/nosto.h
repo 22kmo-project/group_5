@@ -6,6 +6,7 @@
 #include <QtNetwork>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
+#include "saldo.h"
 
 namespace Ui {
 class nosto;
@@ -22,6 +23,9 @@ public:
     void paivitanosto(int, QString);
     const QByteArray &getWebtoken() const;
     void setWebtoken(const QByteArray &newWebtoken);
+    void tilintyyppi(int);
+    void muutasaldo(QString);
+    void paivitasaldo(QString);
 
 
 private:
@@ -38,6 +42,11 @@ private:
     QByteArray response_data;
     QString username;
     QString muusumma;
+    saldo Saldoikkuna;
+    QString accounttype;
+    int saldo;
+    QNetworkAccessManager *getManager;
+    QString tilinsaldo;
 
 signals:
     void PalaaKotinayttoon();
@@ -55,6 +64,7 @@ private slots:
     void on_kakssata_clicked();
     void on_viissata_clicked();
     void on_muusumma_clicked();
+    void saldoslot(QNetworkReply *reply);
 };
 
 #endif // NOSTO_H

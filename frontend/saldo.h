@@ -20,7 +20,7 @@ public:
     void paivitasaldo(QString);
     void paivitatilitapahtumat(QString);
     void tuoTiedot(QString, QString);
-
+    QString tilinsaldo;
     const QByteArray &getWebtoken() const;
     void setWebtoken(const QByteArray &newWebtoken);
 
