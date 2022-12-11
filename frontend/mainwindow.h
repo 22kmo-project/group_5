@@ -22,8 +22,10 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    const QString &getWebToken() const;
+    const QByteArray &getWebToken() const;
     void setWebToken(const QByteArray &newWebToken);
+    void tilityyppi(QString);
+    int valinta;
 
 
 private slots:
@@ -42,6 +44,7 @@ private slots:
 
     void on_naytasaldo_clicked();
     void loginSlot (QNetworkReply *reply);
+    void tilityyppiSlot(QNetworkReply *reply2);
 
 public slots:
     void ajastin();
@@ -56,10 +59,15 @@ private:
     QTimer *timer;
     int aika;
     QNetworkAccessManager *loginManager;
+    QNetworkAccessManager *getType;
     QNetworkReply *reply;
+    QNetworkReply *reply2;
     QByteArray response_data;
-    QByteArray token;
+    QByteArray response_data2;
     QString username;
     int amount;
+    QString valitsetili;
+    QByteArray token;
+
 };
 #endif // MAINWINDOW_H

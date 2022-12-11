@@ -1,12 +1,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "myurl.h"
 #include <QStackedWidget>
 #include <QDebug>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    valinta=0;
     ui->setupUi(this);
     ui->stackedWidget->insertWidget(3, &Nostoikkuna); //tässä asetan nostotapahtumien index numeroksi 3
     ui->stackedWidget->insertWidget(4, &Saldoikkuna); //saldolle index 4
@@ -31,9 +34,28 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::setWebToken(const QByteArray &newWebToken)
+const QByteArray &MainWindow::getWebToken() const
 {
-    token = newWebToken;
+    return token;
+}
+
+
+void MainWindow::tilityyppi(QString user2)
+{
+    //tilityypin valintaa hahmoteltu seuraavaan
+    username=user2;
+    token=getWebToken();
+    QString site_url=myUrl::getBaseUrl()+"/account/"+username;
+    QNetworkRequest request((site_url));
+    //WEBTOKEN ALKU
+    request.setRawHeader(QByteArray("Authorization"),(token));
+    //WEBTOKEN LOPPU
+    getType = new QNetworkAccessManager(this);
+
+    connect(getType, SIGNAL(finished (QNetworkReply*)), this, SLOT(tilityyppiSlot(QNetworkReply*)));
+
+    reply2 = getType->get(request);
+
 }
 
 
@@ -73,6 +95,12 @@ void MainWindow::on_seuraava_2_clicked()
 
 
         ui->asiakasnimi->setText(username); //asiakkaan nimi aloitusnäytölle
+
+
+
+
+
+
 }
 
 
@@ -153,8 +181,14 @@ if(response_data.length()==0){
                 ui->virheviesti2->setText("Tunnus ja salasana eivät täsmää");
             }
             else {
-                setWebToken("Bearer "+response_data); //webtokeni lähtee tuonne ja tallentuu sinne
-                ui->stackedWidget->setCurrentIndex(2); // jos tunnusluku oli oikein niin siirrytään aloitusnäyttöön
+                setWebToken("Bearer "+response_data);
+                 tilityyppi(username);
+                 //qDebug()<<valitsetili;
+                 //if(valitsetili>0){
+                     //QMessageBox::question(this, "Valitse tilityyppi", "Valitse käytettävä tilityyppi" );
+                 //}
+
+                //ui->stackedWidget->setCurrentIndex(2); // jos tunnusluku oli oikein niin siirrytään aloitusnäyttöön
                 aika = 0; //nollataan kulunut aika
                 timer->start(1000); //startataan timer
             }
@@ -163,6 +197,50 @@ if(response_data.length()==0){
     reply->deleteLater();
     loginManager->deleteLater();
 }
+
+void MainWindow::tilityyppiSlot(QNetworkReply *reply2)
+{
+    response_data2=reply2->readAll();
+    //qDebug()<<response_data2;
+    QJsonDocument json_doc = QJsonDocument::fromJson(response_data2);
+    QJsonArray json_array = json_doc.array();
+
+    QString tilityyppi;
+    foreach (const QJsonValue &value, json_array) { //vääntää json:in QStringiksi
+        QJsonObject json_obj = value.toObject();
+        tilityyppi+=QString::number(json_obj["accounttype"].toInt());
+    }
+    valitsetili=tilityyppi;
+    //qDebug()<<"tilin tyyppi on";
+    qDebug()<<valitsetili;
+    if(valitsetili>"0"){
+        QMessageBox *msgBox;
+        msgBox = new QMessageBox(this);
+        msgBox->setText("Valitse tilityyppi");
+        msgBox->setIcon(QMessageBox::Question);
+        msgBox->setWindowTitle("Valitse tilityyppi");
+        msgBox->setStyleSheet("background-color:#48b76a;");
+        QPushButton *creditButton = msgBox->addButton(tr("Credit"), QMessageBox::ActionRole);
+        QPushButton *debitButton = msgBox->addButton(tr("Debit"), QMessageBox::ActionRole);
+        creditButton->setObjectName("crd");
+
+        msgBox->exec();
+
+        if (msgBox->clickedButton() == creditButton) {
+            valinta=1;
+            ui->stackedWidget->setCurrentIndex(2);
+        } else if (msgBox->clickedButton() == debitButton) {
+            valinta=2;
+            ui->stackedWidget->setCurrentIndex(2);
+        }
+        //QMessageBox::information(this, "Valitse tilityyppi","Valitse käytettävä tilityyppi");
+    }
+    else{
+        valinta=2;
+        ui->stackedWidget->setCurrentIndex(2);
+    }
+}
+
 
 void MainWindow::ajastin()
 {
@@ -184,4 +262,10 @@ void MainWindow::ajastin()
         aika = 0;
         timer->start();//kun oot ollu saldo, tilitapahtuma tai nostonäkymässä määrätyn ajan niin nakataa aloitusnäyttöön
     }
+}
+
+
+void MainWindow::setWebToken(const QByteArray &newWebToken)
+{
+    token = newWebToken;
 }
