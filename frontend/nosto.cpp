@@ -227,18 +227,19 @@ void nosto::on_muusumma_clicked()
     timer2->stop();
     aika = 0;
     timer2->start();
-    QValidator *validator = new QIntValidator(0, 999, this);
-    QLineEdit *edit = new QLineEdit(this);
 
-    // the edit lineedit will only accept integers between 0 and 999
-    edit->setValidator(validator);
-    muusumma=ui->muusummaedit->text();
-    bool ok;
-    amount=muusumma.toInt(&ok, 10);
     if(saldo<amount && accounttype=="\u0002") //jos tilin saldo on pienempi kuin nostettava raha ja tilin tyyppi on debit
     {QMessageBox::critical(this, "Nosto ei onnistu", "Tili ei voi mennä miinukselle");
     }
     else{
+        QValidator *validator = new QIntValidator(0, 999, this);
+        QLineEdit *edit = new QLineEdit(this);
+
+        // the edit lineedit will only accept integers between 0 and 999
+        edit->setValidator(validator);
+        muusumma=ui->muusummaedit->text();
+        bool ok;
+        amount=muusumma.toInt(&ok, 10);
         QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin massit");
         this->paivitanosto(amount,username);
     }
