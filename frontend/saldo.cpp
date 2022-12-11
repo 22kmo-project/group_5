@@ -64,7 +64,7 @@ void saldo::saldoSlot(QNetworkReply *reply)
         saldo+=QString::number(json_obj["saldo"].toInt());
     }
 
-    //qDebug()<<saldo;
+    qDebug()<<saldo;
 
     ui->tilinsaldo->setText(saldo);
 

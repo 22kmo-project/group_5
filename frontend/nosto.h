@@ -6,6 +6,7 @@
 #include <QtNetwork>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
+#include <saldo.h>
 
 namespace Ui {
 class nosto;
@@ -22,6 +23,7 @@ public:
     void paivitanosto(int, QString);
     const QByteArray &getWebtoken() const;
     void setWebtoken(const QByteArray &newWebtoken);
+    void checkWithdraw(int amount, int balance);
 
 
 private:
@@ -38,6 +40,7 @@ private:
     QByteArray response_data;
     QString username;
     QString muusumma;
+    saldo saldo;
 
 
 signals:

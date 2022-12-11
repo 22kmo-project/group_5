@@ -17,6 +17,7 @@ nosto::nosto(QWidget *parent) :
     connect(timer2, SIGNAL(timeout()), this, SLOT(ajastin2())); //timerin yhistäminen
             //timer2->start(1000);
     ui->muusummaedit->setPlaceholderText("Syötä muu summa esim. 45");
+
 }
 
 nosto::~nosto()
@@ -64,7 +65,15 @@ const QByteArray &nosto::getWebtoken() const
 
 void nosto::setWebtoken(const QByteArray &newWebtoken)
 {
- webtoken = newWebtoken;
+    webtoken = newWebtoken;
+}
+
+void nosto::checkWithdraw(int amount, int balance)
+{
+    if(balance<amount)
+    {
+
+    }>><<
 }
 
 
@@ -85,6 +94,9 @@ void nosto::on_kakskyt_clicked()
     QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 20 euroa"); //näyttöön tulee ilmoitus noston onnistumisesta/epäonnistumisesta
     amount = 20;
         this->paivitanosto(amount,username);
+    amount=0;
+
+
 }
 
 
@@ -96,6 +108,7 @@ void nosto::on_nelkyt_clicked()
     QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 40 euroa");
     amount = 40;
         this->paivitanosto(amount,username);
+    amount=0;
 }
 
 
@@ -107,6 +120,7 @@ void nosto::on_kuuskyt_clicked()
     QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 60 euroa");
     amount = 60;
         this->paivitanosto(amount,username);
+    amount=0;
 }
 
 
@@ -118,6 +132,7 @@ void nosto::on_sata_clicked()
     QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 100 euroa");
     amount = 100;
         this->paivitanosto(amount,username);
+    amount=0;
 }
 
 
@@ -129,6 +144,7 @@ void nosto::on_kakssata_clicked()
     QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 200 euroa");
     amount = 200;
         this->paivitanosto(amount,username);
+    amount=0;
 }
 
 
@@ -140,6 +156,7 @@ void nosto::on_viissata_clicked()
     QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin 500 euroa");
     amount = 500;
         this->paivitanosto(amount,username);
+    amount=0;
 }
 
 void nosto::ajastin2()
@@ -178,6 +195,7 @@ void nosto::on_muusumma_clicked()
     this->paivitanosto(amount, username);
     qDebug()<<amount;
     QMessageBox::information(this, "Nosto onnistui", "Tililtäsi nostettiin euroa"); //tuohon väliin vielä amount muuttujan arvo
+    amount=0;
 
 }
 

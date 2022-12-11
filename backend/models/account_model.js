@@ -2,8 +2,11 @@ const db = require('../database');
 
 const account = {
   getById: function(id, callback) {
-    return db.query('select saldo from account where idaccount=?', [id], callback);
+    return db.query('select saldo,accounttype from account where idaccount=?', [id], callback);
   },
+  //getAccounttype: function(id, callback) {
+  // return db.query('select accounttype from account where idaccount=?', [id], callback);
+ // },
   getAll: function(callback) {
     return db.query('select * from account', callback);
   },
@@ -28,8 +31,15 @@ const account = {
     let doubleAmount=parseFloat(data.amount);
     return db.query('CALL withdraw(?,?)', [idaccount, doubleAmount], callback);
 
+    
+
+
  /* withdraw: function (idaccount, data, callback) {
     return db.query('CALL withdraw(?,?)', [idaccount, data.amount], callback); */
 }, 
+debit_transfer: function (idaccount, data, callback) {
+  let doubleAmount=parseFloat(data.amount);
+  return db.query('CALL withdraw(?,?)', [idaccount, doubleAmount], callback);
+},
 };
 module.exports = account;

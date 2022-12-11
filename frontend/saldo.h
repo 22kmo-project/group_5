@@ -35,6 +35,7 @@ private:
     QByteArray webtoken;
     QString username;
 
+
     QNetworkAccessManager *getManager;
     QNetworkReply *reply;
     QByteArray response_Data;

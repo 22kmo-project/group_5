@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const account = require('../models/account_model');
+//const accounttype = require('../models/accounttype_model')
 
 router.get('/:id?',
 function(request,response){
@@ -94,5 +95,23 @@ router.put("/withdraw/:id", function (request, response) {
   });
 }
 );
+
+router.put("/debit_transfer/:id", function (request, response) {
+  account.debit_transfer(request.params.id, request.body, function (err, dbResult) {
+    if (err) {
+      response.send(err);
+    } else {
+      if (dbResult.length > 0) {
+        response.send(false);
+      } else {
+        response.send(true);
+      }
+    }
+  });
+}
+);
+
+
+
 
 module.exports = router;
